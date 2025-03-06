@@ -1,29 +1,25 @@
-mc_rtc new plugin template
+mc_rtc Collision Detection Zurlo plugin
 ==
 
-This project is a template for a new plugin wihtin [mc_rtc]
+This project is a [mc_rtc] plugin implementing the collision detection method from the paper:
 
-It comes with:
-- a CMake project that can build a plugin for [mc_rtc], the project can be put within [mc_rtc] source-tree for easier updates
-- clang-format files
-- automated GitHub Actions builds on three major platforms
+Collision Detection and Contact Point Estimation Using Virtual Joint Torque Sensing Applied to a Cobot.
 
-Quick start
---
+This implementation focuses only on collision detection and does not include contact point estimation. It has been implemented and tested on the Kinova Gen 3 collaborative robot (cobot).
 
-1. Renaming the controller from `CollisionDetectionZurlo` to `MyPlugin`. In a shell (Git Bash on Windows, replace sed with gsed on macOS):
+# Requirements
 
-```bash
-sed -i -e's/CollisionDetectionZurlo/MyPlugin/g' `find . -type f`
-git mv src/CollisionDetectionZurlo.cpp src/MyPlugin.cpp
-git mv src/CollisionDetectionZurlo.h src/MyPlugin.h
-git mv etc/CollisionDetectionZurlo.in.yaml etc/MyPlugin.in.yaml
-```
+This plugin depends on the following mc_rtc plugins:
 
-2. You can customize the project name in vcpkg.json as well, note that this must follow [vcpkg manifest rules](https://github.com/microsoft/vcpkg/blob/master/docs/users/manifests.md)
+- [mc_current_residual](https://github.com/bastien-muraccioli/mc_current_residual)
+- [mc_energy_residual](https://github.com/bastien-muraccioli/mc_energy_residual)
 
-3. Build and install the project
+# References
 
-4. Run using your [mc_rtc] interface of choice, add `MyPlugin` to the `Plugins` configuration entry or enable the autoload option
+D. Zurlo, T. Heitmann, M. Morlock and A. De Luca, "Collision Detection and Contact Point Estimation Using Virtual Joint Torque Sensing Applied to a Cobot," 2023 IEEE International Conference on Robotics and Automation (ICRA), London, United Kingdom, 2023, pp. 7533-7539, doi: 10.1109/ICRA48891.2023.10160661. keywords: {Torque;Atmospheric measurements;Service robots;Current measurement;Estimation;Robot sensing systems;Particle measurements},
+
+# Author
+
+This implementation was developed by Bastien Muraccioli and is not affiliated with the original authors of the referenced paper.
 
 [mc_rtc]: https://jrl-umi3218.github.io/mc_rtc/

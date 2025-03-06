@@ -15,15 +15,22 @@ struct CollisionDetectionZurlo : public mc_control::GlobalPlugin
 
   void reset(mc_control::MCGlobalController & controller) override;
 
-  void before(mc_control::MCGlobalController &) override;
+  void before(mc_control::MCGlobalController & controller) override;
 
   void after(mc_control::MCGlobalController & controller) override;
+
+  void addGui(mc_control::MCGlobalController & controller);
+  void addLog(mc_control::MCGlobalController & controller);
 
   mc_control::GlobalPlugin::GlobalPluginConfiguration configuration() override;
 
   ~CollisionDetectionZurlo() override;
 
 private:
+  bool collision_stop_activated_ = false;
+  bool energy_residual_obstacle_detected_ = false;
+  bool current_residual_obstacle_detected_ = false;
+  bool obstacle_detected_ = false;
 };
 
 } // namespace mc_plugin
